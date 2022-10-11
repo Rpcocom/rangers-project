@@ -1,0 +1,13 @@
+<div class="img-container">
+   <p-image src="assets/img/jornada.png" alt="Image" width="1000"></p-image>
+</div>
+
+<div class="players-container">
+   <p-card class="player-card" *ngFor="let player of players">
+      <ng-template pTemplate="header">
+         <h2 class="player-name">{{player.name}}</h2>
+      </ng-template>
+      <p><b>Position:</b> {{player.pos}}</p>
+      <p> <b>Nationality:</b> {{player.nat}}</p>
+   </p-card>
+</div>
