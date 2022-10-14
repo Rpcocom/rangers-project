@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-players',
@@ -6,6 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./players.component.css']
 })
 export class PlayersComponent implements OnInit {
+
+  public formPlayer!: FormGroup<any>;
+  hasErrors: boolean = false;
+  constructor(private formbuilder: FormBuilder) {
+
+  }
+
+
+
+  display: boolean = false;
+  countries!: { name: string }[];
+  selectedCouuntry!: { name: string };
+  positions!: { name: string }[];
+  selectedPosition!: { name: string };
   players: any[] = [
     {
       name: "Rodrigo Puc",
@@ -49,9 +66,62 @@ export class PlayersComponent implements OnInit {
     }
   ]
 
-  constructor() { }
 
   ngOnInit(): void {
+
+    this.formPlayer = this.formbuilder.group({
+      fname: ["", [Validators.required]],
+      lname: ["", [Validators.required]],
+      age: ["", [Validators.required]],
+      position: ["", [Validators.required]],
+      country: ["", [Validators.required]]
+
+    })
+
+
+    this.countries = [
+      { name: "Mexico" },
+      { name: "Colombia" },
+      { name: "Argentine"}
+
+    ];
+
+    this.positions = [
+      { name: "Portero" },
+      { name: "Defensa" },
+      { name: "Mediocampista" },
+      { name: "Delantero" }
+    ];
+  }
+
+  showDialog() {
+    this.display = true;
+  }
+
+  submitPlayer() {
+    if (this.formPlayer.invalid) {
+      alert("Invaid form, please check")
+    } else {
+      alert("All done")
+    }
+  }
+
+  playerSend() {
+    this.display = true;
+  }
+
+  clearForm() {
+    this.formPlayer.reset();
+  }
+
+
+  hasInputError(name: string) {
+    return this.formPlayer.get(name)?.errors &&
+      this.formPlayer.get(name)?.hasError('required')
+  }
+
+  getErrorMessages(name: string) {
+    return this.formPlayer.controls[name].errors
   }
 
 }

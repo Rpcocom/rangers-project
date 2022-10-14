@@ -1,10 +1,57 @@
-<p-chips formControlName="cities"></p-chips>
-<div class="players-container">
-   <p-card class="player-card" *ngFor="let player of players">
-      <ng-template pTemplate="header">
-         <h2 class="player-name">{{player.name}}</h2>
-     </ng-template>
-      <p><b>Position:</b> {{player.pos}}</p>
-      <p> <b>Nationality:</b> {{player.nat}}</p>
-   </p-card>
+<form [formGroup]="formPlayer" (submit)="playerSend()">
+   <p-dialog (onHide)="clearForm()" [(visible)]="display" header="Title" [(visible)]="display"
+      [style]="{'width':'750px','height':'800px'}">
+      <p-card>
+         <div>
+            <label class="add-player-label" for="fname">FIRST NAME</label>
+            <input formControlName="fname" type="text" pInputText
+               [ngClass]="{'ng-invalid':hasInputError('fname'), 'ng-dirty':hasInputError('fname')}" />
+            <small class="error-message" *ngIf="hasInputError('fname')">
+               <p *ngFor="let item of getErrorMessages('fname') | keyvalue">
+                  {{item.key | titlecase}}
+               </p>
+            </small>
+         </div>
+
+
+         <div>
+            <label class="add-player-label" for="lname">LAST NAME</label>
+            <input formControlName="lname" type="text" pInputText 
+            [ngClass]="{'ng-invalid':hasInputError('lname'), 'ng-dirty':hasInputError('lname')}"/>
+            <small class="error-message" *ngIf="hasInputError('lname')">
+               <p *ngFor="let item of getErrorMessages('lname') | keyvalue">
+                  {{item.key | titlecase}}
+               </p>
+            </small>
+         </div>
+
+         <div>
+            <label class="add-player-label" for="age">AGE</label>
+            <input formControlName="age" type="text" pInputText
+            [ngClass]="{'ng-invalid':hasInputError('age'), 'ng-dirty':hasInputError('age')}" />
+            <small class="error-message" *ngIf="hasInputError('age')">
+               <p *ngFor="let item of getErrorMessages('age') | keyvalue">
+                  {{item.key | titlecase}}
+               </p>
+            </small>
+         </div>
+      </p-card>
+
+      <label class="add-player-label" for="Country">Positons</label>
+      <p-dropdown formControlName="position" placeholder="Select player position" [tooltipPosition]="'top'"
+         [options]="positions" optionLabel="name">
+      </p-dropdown>
+
+      <label class="add-player-label" for="Country">Country</label>
+      <p-dropdown formControlName="country" placeholder="Select country" [tooltipPosition]="'left'"
+         [options]="countries" optionLabel="name">
+      </p-dropdown>
+
+      <button id="button-player" label="ADD PLAYER" class="p-button-success" pButton [disabled]="formPlayer.invalid" type="button"
+         (click)="submitPlayer()"></button>
+   </p-dialog>
+</form>
+
+<div class="button-player">
+   <button id="button-players" pButton type="button" label="ADD PLAYERS" type="button" (click)="showDialog()"></button>
 </div>

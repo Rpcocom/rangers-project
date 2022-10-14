@@ -11,6 +11,6 @@ import { PrimeNgModule } from './prime-ng.module';
     CommonModule,
     PrimeNgModule
   ],
-  exports: [NavbarComponent]
+  exports: [NavbarComponent,PrimeNgModule]
 })
 export class SharedModule { }
