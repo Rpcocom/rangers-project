@@ -1,9 +1,10 @@
 <form [formGroup]="formPlayer" (submit)="playerSend()">
-   <p-dialog (onHide)="clearForm()" [(visible)]="display" header="Title" [(visible)]="display"
+   <p-dialog (onHide)="clearForm()" [(visible)]="display" header="ADD PLAYER" [(visible)]="display"
       [style]="{'width':'750px','height':'800px'}">
       <p-card>
+         <!--Full NAME INPUT-->
          <div>
-            <label class="add-player-label" for="fname">FIRST NAME</label>
+            <label class="add-player-label" for="fname">FULL NAME</label>
             <input formControlName="fname" type="text" pInputText
                [ngClass]="{'ng-invalid':hasInputError('fname'), 'ng-dirty':hasInputError('fname')}" />
             <small class="error-message" *ngIf="hasInputError('fname')">
@@ -12,46 +13,55 @@
                </p>
             </small>
          </div>
-
-
-         <div>
-            <label class="add-player-label" for="lname">LAST NAME</label>
-            <input formControlName="lname" type="text" pInputText 
-            [ngClass]="{'ng-invalid':hasInputError('lname'), 'ng-dirty':hasInputError('lname')}"/>
-            <small class="error-message" *ngIf="hasInputError('lname')">
-               <p *ngFor="let item of getErrorMessages('lname') | keyvalue">
-                  {{item.key | titlecase}}
-               </p>
-            </small>
-         </div>
-
+         <!--AGE INPUT-->
          <div>
             <label class="add-player-label" for="age">AGE</label>
             <input formControlName="age" type="text" pInputText
-            [ngClass]="{'ng-invalid':hasInputError('age'), 'ng-dirty':hasInputError('age')}" />
+               [ngClass]="{'ng-invalid':hasInputError('age'), 'ng-dirty':hasInputError('age')}" />
             <small class="error-message" *ngIf="hasInputError('age')">
                <p *ngFor="let item of getErrorMessages('age') | keyvalue">
                   {{item.key | titlecase}}
                </p>
             </small>
          </div>
+
+         <!--WEIGHT INPUT-->
+         <div>
+            <label class="add-player-label" for="weight">WEIGHT</label>
+            <input formControlName="weight" type="text" pInputText/>
+         </div>
+
+         <!--HEIGHT INPUT-->
+         <div>
+            <label class="add-player-label" for="height">HEIGHT</label>
+            <input formControlName="height" type="text" pInputText/>
+         </div>
+
+         <!--POSITIONS DROPDOWN INPUT-->
+         <label class="add-player-label" for="Country">Positons</label>
+         <p-dropdown formControlName="position" placeholder="Select player position" [tooltipPosition]="'top'"
+            [options]="positions" optionLabel="name">
+         </p-dropdown>
+
+         <!--COUNTRY DROPDOWN-->
+         <label class="add-player-label" for="Country">Country</label>
+         <p-dropdown formControlName="country" placeholder="Select country" [tooltipPosition]="'left'"
+            [options]="countries" optionLabel="name">
+         </p-dropdown>
+
+
+
       </p-card>
+      <div class="wrap-button-player">
+         <button id="button-player" label="ADD PLAYER" class="p-button-success" pButton [disabled]="formPlayer.invalid"
+            type="button" (click)="submitPlayer()"></button>
+      </div>
+      <!--BUTTON ADD PLAYER-->
 
-      <label class="add-player-label" for="Country">Positons</label>
-      <p-dropdown formControlName="position" placeholder="Select player position" [tooltipPosition]="'top'"
-         [options]="positions" optionLabel="name">
-      </p-dropdown>
-
-      <label class="add-player-label" for="Country">Country</label>
-      <p-dropdown formControlName="country" placeholder="Select country" [tooltipPosition]="'left'"
-         [options]="countries" optionLabel="name">
-      </p-dropdown>
-
-      <button id="button-player" label="ADD PLAYER" class="p-button-success" pButton [disabled]="formPlayer.invalid" type="button"
-         (click)="submitPlayer()"></button>
    </p-dialog>
 </form>
 
+<!--BUTTON ADD PLAYERS-->
 <div class="button-player">
    <button id="button-players" pButton type="button" label="ADD PLAYERS" type="button" (click)="showDialog()"></button>
 </div>

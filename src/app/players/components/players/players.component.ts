@@ -16,8 +16,6 @@ export class PlayersComponent implements OnInit {
 
   }
 
-
-
   display: boolean = false;
   countries!: { name: string }[];
   selectedCouuntry!: { name: string };
@@ -71,7 +69,6 @@ export class PlayersComponent implements OnInit {
 
     this.formPlayer = this.formbuilder.group({
       fname: ["", [Validators.required]],
-      lname: ["", [Validators.required]],
       age: ["", [Validators.required]],
       position: ["", [Validators.required]],
       country: ["", [Validators.required]]
@@ -87,10 +84,10 @@ export class PlayersComponent implements OnInit {
     ];
 
     this.positions = [
-      { name: "Portero" },
-      { name: "Defensa" },
-      { name: "Mediocampista" },
-      { name: "Delantero" }
+      { name: "Goalkeeper" },
+      { name: "Defender" },
+      { name: "Midfielder" },
+      { name: "Forward" }
     ];
   }
 

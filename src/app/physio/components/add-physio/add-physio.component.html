@@ -1,1 +1,41 @@
-<p>add-physio works!</p>
+<form [formGroup]="formPhysio" (submit)="physioSend()">
+    <p-dialog (onHide)="clearForm()" [(visible)]="display" header="ADD PHYISIOTHERAPIST" [(visible)]="display"
+        [style]="{'width':'750px','height':'800px'}">
+        <p-card>
+            <!--Full NAME INPUT-->
+            <div>
+                <label class="add-player-label" for="fname">FULL NAME</label>
+                <input formControlName="fname" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('fname'), 'ng-dirty':hasInputError('fname')}" />
+                <small class="error-message" *ngIf="hasInputError('fname')">
+                    <p *ngFor="let item of getErrorMessages('fname') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!--AGE INPUT-->
+            <div>
+                <label class="add-player-label" for="age">AGE</label>
+                <input formControlName="age" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('age'), 'ng-dirty':hasInputError('age')}" />
+                <small class="error-message" *ngIf="hasInputError('age')">
+                    <p *ngFor="let item of getErrorMessages('age') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+        </p-card>
+
+        <!--BUTTON ADD PHYSIO-->
+        <div class="wrap-physio">
+            <button id="button-physio" label="ADD PHYSIO" class="p-button-success" pButton
+                [disabled]="formPhysio.invalid" type="button" (click)="submitPlayer()"></button>
+        </div>
+
+    </p-dialog>
+</form>
+
+
+<div class="wrap-physios">
+    <button id="button-physios" pButton type="button" label="ADD PHYSIOS" type="button" (click)="showDialog()"></button>
+</div>

@@ -81,3 +81,9 @@ textarea {
     margin-top: 10px;
 
 }
+
+.wrap-button-player{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
