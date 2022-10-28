@@ -14,7 +14,7 @@
 .player-name {
     padding: 10px;
     text-align: center;
-    color: #B6E388
+    color: white;
 }
 
 .Img-match {
@@ -86,4 +86,12 @@ textarea {
     display: flex;
     justify-content: end;
     margin-top: 10px;
+}
+
+.button-edit{
+    background-color: #2192FF;
+}
+
+.button-delete{
+    background-color:#F65A83;
 }

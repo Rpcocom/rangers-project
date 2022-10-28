@@ -28,13 +28,13 @@
          <!--WEIGHT INPUT-->
          <div>
             <label class="add-player-label" for="weight">WEIGHT</label>
-            <input formControlName="weight" type="text" pInputText/>
+            <input formControlName="weight" type="text" pInputText />
          </div>
 
          <!--HEIGHT INPUT-->
          <div>
             <label class="add-player-label" for="height">HEIGHT</label>
-            <input formControlName="height" type="text" pInputText/>
+            <input formControlName="height" type="text" pInputText />
          </div>
 
          <!--POSITIONS DROPDOWN INPUT-->
@@ -64,4 +64,24 @@
 <!--BUTTON ADD PLAYERS-->
 <div class="button-player">
    <button id="button-players" pButton type="button" label="ADD PLAYERS" type="button" (click)="showDialog()"></button>
+</div>
+
+<div class="flex flex-row gap-4 flex-wrap justify-content-center">
+   <div *ngFor="let player of players" class="w-full max-w-15rem">
+      <p-card class="player-card">
+         <ng-template pTemplate="header">
+            <h2 class="player-name">{{player.fname}}</h2>
+         </ng-template>
+         <p>Age: {{player.age}}</p>
+         <p>Height: {{player.height}}</p>
+         <p>Position: {{player.position.name}}</p>
+         <p>Country: {{player.country.name}}</p>
+
+         <span class="p-buttonset">
+            <button pButton type="button" label="Edit" icon=" pi pi-file-edit" class="ml-2 p-button-info button-edit"></button>
+            <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-danger ml-2 button-delete"></button>
+         </span>
+
+      </p-card>
+   </div>
 </div>
