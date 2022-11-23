@@ -1,1 +1,83 @@
-<p>add-tests works!</p>
+<form [formGroup]="formTest" (submit)="testSend()">
+    <p-dialog (onHide)="clearForm()" [(visible)]="display" header="ADD PHYISICAL TEST" [(visible)]="display"
+        [style]="{'width':'750px','height':'800px'}">
+        <p-card>
+            <div class="wrap-dropdown-players">
+                <label class="add-physio-label" for="Countr">Seleccionar jugador</label>
+                <p-dropdown  formControlName="position" [tooltipPosition]="'top'" optionLabel="">
+                </p-dropdown>
+            </div>
+
+
+            <!--SPEED INPUT-->
+            <div>
+                <label class="add-test-label" for="speed">SPEED</label>
+                <input formControlName="speed" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('speed'), 'ng-dirty':hasInputError('speed')}" />
+                <small class="error-message" *ngIf="hasInputError('speed')">
+                    <p *ngFor="let item of getErrorMessages('speed') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!--SPRINT INPUT-->
+            <div>
+                <label class="add-test-label" for="sprint">SPRINT</label>
+                <input formControlName="sprint" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('sprint'), 'ng-dirty':hasInputError('sprint')}" />
+                <small class="error-message" *ngIf="hasInputError('sprint')">
+                    <p *ngFor="let item of getErrorMessages('sprint') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!--FLEXIBILTY INPUT-->
+            <div>
+                <label class="add-test-label" for="flexibility">flexibility</label>
+                <input formControlName="flexibility" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('flexibility'), 'ng-dirty':hasInputError('flexibility')}" />
+                <small class="error-message" *ngIf="hasInputError('flexibility')">
+                    <p *ngFor="let item of getErrorMessages('flexibility') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!-- JUMP INPUT-->
+            <div>
+                <label class="add-test-label" for="jump">JUMP</label>
+                <input formControlName="jump" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('jump'), 'ng-dirty':hasInputError('jump')}" />
+                <small class="error-message" *ngIf="hasInputError('jump')">
+                    <p *ngFor="let item of getErrorMessages('jump') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!-- ABS INPUT-->
+            <div>
+                <label class="add-test-label" for="abs">ABS</label>
+                <input formControlName="abs" type="text" pInputText
+                    [ngClass]="{'ng-invalid':hasInputError('abs'), 'ng-dirty':hasInputError('abs')}" />
+                <small class="error-message" *ngIf="hasInputError('abs')">
+                    <p *ngFor="let item of getErrorMessages('abs') | keyvalue">
+                        {{item.key | titlecase}}
+                    </p>
+                </small>
+            </div>
+            <!-- DATE INPUT-->
+            <div>
+                <label class="add-test-label" for="date">DATE</label>
+                <input formControlName="date" type="date" pInputText />
+            </div>
+        </p-card>
+        <!--BUTTON ADD TEST-->
+        <div class="wrap-test">
+            <button id="button-test" label="ADD PHYSICAL TEST" class="p-button-success" pButton
+                [disabled]="formTest.invalid" type="button" (click)="submitTest()"></button>
+        </div>
+
+    </p-dialog>
+</form>
+<div class="wrap-tests">
+    <button id="button-tests" pButton type="button" label="ADD TESTS" type="button" (click)="showDialog()"></button>
+</div>

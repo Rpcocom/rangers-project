@@ -1,0 +1,93 @@
+.test-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.test-card {
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.test-name {
+    padding: 10px;
+    text-align: center;
+    color: #B6E388
+}
+
+
+.container-form {
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+input[type=text],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+.add-test-label {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+/* button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  
+} */
+
+.test-dialog {
+    width: 100px;
+    height: 800px;
+}
+
+.error-message {
+    color:red
+}
+
+#button-tests{
+    font-size: 20px;
+    background-color:#4CAF50;
+    color: white;
+    width: 200px;
+    border-radius: 10px;
+}
+#button-test{
+    background-color:#4CAF50;
+    color: white;
+}
+
+.wrap-tests{
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+
+}
+.wrap-test{
+    display: flex;
+    justify-content:end;
+    margin-top: 10px;
+}
+
+.wrap-dropdown-players
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+

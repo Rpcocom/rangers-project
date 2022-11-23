@@ -14,7 +14,7 @@
 .player-name {
     padding: 10px;
     text-align: center;
-    color: white;
+    color:#B6E388
 }
 
 .Img-match {
@@ -90,8 +90,10 @@ textarea {
 
 .button-edit{
     background-color: #2192FF;
+    color: #F7F7F7;
 }
 
 .button-delete{
     background-color:#F65A83;
+    color: #F7F7F7;
 }

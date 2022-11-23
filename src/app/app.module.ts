@@ -27,7 +27,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     provideFirestore(() => getFirestore())
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  exports:[SharedModule]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

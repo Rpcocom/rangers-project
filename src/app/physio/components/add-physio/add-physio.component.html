@@ -4,7 +4,7 @@
         <p-card>
             <!--Full NAME INPUT-->
             <div>
-                <label class="add-player-label" for="fname">FULL NAME</label>
+                <label class="add-physio-label" for="fname">FULL NAME</label>
                 <input formControlName="fname" type="text" pInputText
                     [ngClass]="{'ng-invalid':hasInputError('fname'), 'ng-dirty':hasInputError('fname')}" />
                 <small class="error-message" *ngIf="hasInputError('fname')">
@@ -15,7 +15,7 @@
             </div>
             <!--AGE INPUT-->
             <div>
-                <label class="add-player-label" for="age">AGE</label>
+                <label class="add-physio-label" for="age">AGE</label>
                 <input formControlName="age" type="text" pInputText
                     [ngClass]="{'ng-invalid':hasInputError('age'), 'ng-dirty':hasInputError('age')}" />
                 <small class="error-message" *ngIf="hasInputError('age')">
@@ -27,15 +27,35 @@
         </p-card>
 
         <!--BUTTON ADD PHYSIO-->
-        <div class="wrap-physio">
+        <div class="wrap-physios">
             <button id="button-physio" label="ADD PHYSIO" class="p-button-success" pButton
-                [disabled]="formPhysio.invalid" type="button" (click)="submitPlayer()"></button>
+                [disabled]="formPhysio.invalid" type="button" (click)="physio? updatePhysio(physio._id):submitPhysio()"></button>
         </div>
 
     </p-dialog>
 </form>
 
 
-<div class="wrap-physios">
+<div class="wrap-button-physio">
     <button id="button-physios" pButton type="button" label="ADD PHYSIOS" type="button" (click)="showDialog()"></button>
 </div>
+
+
+<div class="flex flex-row gap-4 flex-wrap justify-content-center">
+    <div *ngFor="let physio of physios" class="w-full max-w-15rem">
+       <p-card class="physio-card">
+          <ng-template pTemplate="header">
+             <h2 class="physio-name">{{physio.fname}}</h2>
+          </ng-template>
+          <p>Age: {{physio.age}}</p> 
+          <span class="p-buttonset">
+             <button pButton type="button"  (click)="openUpdatePhysio(physio._id)" label="Edit" icon=" pi pi-file-edit"
+                class="ml-2 p-button-info button-edit"></button>
+             <p-confirmDialog pButton type="button" label="Delete" icon="pi pi-trash"
+                class="p-button-danger ml-2 button-delete" (click)="deletePhysio(physio._id)"></p-confirmDialog>
+          </span>
+       </p-card>
+    </div>
+ </div>
+
+<p-toast></p-toast>

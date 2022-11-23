@@ -5,7 +5,7 @@
          <!--Full NAME INPUT-->
          <div>
             <label class="add-player-label" for="fname">FULL NAME</label>
-            <input formControlName="fname" type="text" pInputText
+            <input formControlName="fname"  type="text" pInputText
                [ngClass]="{'ng-invalid':hasInputError('fname'), 'ng-dirty':hasInputError('fname')}" />
             <small class="error-message" *ngIf="hasInputError('fname')">
                <p *ngFor="let item of getErrorMessages('fname') | keyvalue">
@@ -38,26 +38,25 @@
          </div>
 
          <!--POSITIONS DROPDOWN INPUT-->
-         <label class="add-player-label" for="Country">Positons</label>
-         <p-dropdown formControlName="position" placeholder="Select player position" [tooltipPosition]="'top'"
+         <label class="add-player-label" for="Country">Positions</label>
+         <p-dropdown formControlName="position" 
+            [placeholder]="player ? player.position.name : 'Select position'" [tooltipPosition]="'top'"
             [options]="positions" optionLabel="name">
          </p-dropdown>
 
          <!--COUNTRY DROPDOWN-->
          <label class="add-player-label" for="Country">Country</label>
-         <p-dropdown formControlName="country" placeholder="Select country" [tooltipPosition]="'left'"
+         <p-dropdown formControlName="country" 
+            [placeholder]="player ? player.country.name : 'Select position'" [tooltipPosition]="'left'"
             [options]="countries" optionLabel="name">
          </p-dropdown>
-
-
-
       </p-card>
+      
+      <!--BUTTON ADD PLAYER-->
       <div class="wrap-button-player">
          <button id="button-player" label="ADD PLAYER" class="p-button-success" pButton [disabled]="formPlayer.invalid"
-            type="button" (click)="submitPlayer()"></button>
+            type="button" (click)="player ? updatePlayer(player._id):submitPlayer()"></button>
       </div>
-      <!--BUTTON ADD PLAYER-->
-
    </p-dialog>
 </form>
 
@@ -74,14 +73,17 @@
          </ng-template>
          <p>Age: {{player.age}}</p>
          <p>Height: {{player.height}}</p>
+         <p>Weight: {{player.weight}}</p>
          <p>Position: {{player.position.name}}</p>
          <p>Country: {{player.country.name}}</p>
 
          <span class="p-buttonset">
-            <button pButton type="button" label="Edit" icon=" pi pi-file-edit" class="ml-2 p-button-info button-edit"></button>
-            <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-danger ml-2 button-delete"></button>
+            <button pButton type="button" (click)="openUpdatePlayer(player._id)" label="Edit" icon=" pi pi-file-edit"
+               class="ml-2 p-button-info button-edit"></button>
+            <p-confirmDialog pButton type="button" label="Delete" icon="pi pi-trash"
+               class="p-button-danger ml-2 button-delete" (click)="deletePlayer(player._id)"></p-confirmDialog>
          </span>
-
       </p-card>
    </div>
 </div>
+<p-toast></p-toast>

@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddTestsComponent } from './components/add-tests/add-tests.component';
 import { TestsRoutingModule } from './tests-routing.module';
-
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,9 @@ import { TestsRoutingModule } from './tests-routing.module';
   ],
   imports: [
     CommonModule,
-    TestsRoutingModule
-  ]
+    TestsRoutingModule,
+    ReactiveFormsModule,
+    SharedModule
+  ],
 })
 export class TestsModule { }

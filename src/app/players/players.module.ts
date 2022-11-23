@@ -5,11 +5,7 @@ import { PlayersRoutingModule } from './players-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { PlayersComponent } from './components/players/players.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
-
-
-
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -20,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     PlayersRoutingModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    ToastModule
   ],
   exports:[DashboardComponent]
 })

@@ -1,1 +1,23 @@
-<p>exercices works!</p>
+<h2 class="player-name">Speed exercises</h2>
+<div class="players-container">
+   <p-card class="player-card" *ngFor="let videoUrl of videos">
+      <ng-template pTemplate="header">
+         <h2 class="player-name">Speed Exercices </h2>
+         <iframe class="videoUrl" [src]="getVideoIframe(videoUrl)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+      </ng-template>
+   </p-card>
+</div>
+
+<h2 class="player-name">Elasticity exercises</h2>
+<div class="players-container">
+   <p-card class="player-card" *ngFor="let videoUrl of videos">
+      <ng-template pTemplate="header">
+         <h2 class="player-name">Elasticity exercises</h2>
+         <iframe class="videoUrl" [src]="getVideoIframe(videoUrl)" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+      </ng-template>
+   </p-card>
+</div>

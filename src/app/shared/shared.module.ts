@@ -9,7 +9,7 @@ import { PrimeNgModule } from './prime-ng.module';
   declarations: [NavbarComponent],
   imports: [
     CommonModule,
-    PrimeNgModule,
+    PrimeNgModule
   ],
   exports: [NavbarComponent,PrimeNgModule]
 })

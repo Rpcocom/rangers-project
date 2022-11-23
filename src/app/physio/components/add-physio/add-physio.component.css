@@ -77,8 +77,18 @@ textarea {
     margin-top: 10px;
 
 }
-.wrap-physio{
+.wrap-button-physio{
     display: flex;
     justify-content:end;
     margin-top: 10px;
+}
+
+.button-edit{
+    background-color: #2192FF;
+    color: #F7F7F7;
+}
+
+.button-delete{
+    background-color:#F65A83;
+    color: #F7F7F7;
 }

@@ -3,6 +3,6 @@ export interface IPlayer{
     age: string;
     weight:string;
     height:string;
-    positions:string;
-    country:string;
+    position:{name:string};
+    country:{name:string};
 }
